@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-20 bg-slate-50 min-h-screen">
+    
+    <div class="mb-16">
+        <h2 class="text-5xl font-black text-blue-900 capitalize mb-4">
+            {{ ptype }} <span class="text-teal-500">Portfolio</span>
+        </h2>
+        <p class="text-gray-500 max-w-2xl leading-relaxed">
+            Skysun Lifesciences Pvt. Ltd. is committed to therapeutic excellence across 15+ specialized categories. 
+            Our {{ ptype }} range represents our latest advancements in pharmaceutical care.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {% for item in items %}
+            <div class="bg-white rounded-[2.5rem] p-8 shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 group flex flex-col h-full">
+                
+                {% if ptype == 'upcoming' %}
+                <div class="flex justify-end mb-2">
+                    <span class="bg-blue-900 text-white text-[10px] px-4 py-1.5 rounded-full font-bold uppercase tracking-widest shadow-lg">
+                        {{ item.status }}
+                    </span>
+                </div>
+                {% endif %}
+
+                <div class="h-64 bg-slate-50 rounded-[2rem] flex items-center justify-center p-8 mb-6 overflow-hidden relative">
+                    <div class="absolute inset-0 bg-teal-400 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                    
+                    {% if item.img.startswith('http') %}
+                        <img src="{{ item.img }}" 
+                             alt="{{ item.name }}"
+                             class="h-full object-contain drop-shadow-[0_20px_20px_rgba(0,0,0,0.1)] group-hover:scale-110 transition-transform duration-700">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/' + item.img) }}" 
+                             alt="{{ item.name }}"
+                             class="h-full object-contain drop-shadow-[0_20px_20px_rgba(0,0,0,0.1)] group-hover:scale-110 transition-transform duration-700">
+                    {% endif %}
+                </div>
+
+                <div class="flex-grow">
+                    <span class="text-teal-600 font-black text-[10px] uppercase tracking-[0.2em]">{{ item.type }}</span>
+                    <h3 class="text-2xl font-bold text-blue-950 mt-1 mb-3 group-hover:text-teal-600 transition-colors">
+                        {{ item.name }}
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                        {{ item.desc }}
+                    </p>
+                </div>
+                
+                <div class="mt-8 pt-6 border-t border-gray-50 flex justify-between items-center">
+                    {% if ptype == 'available' %}
+                        <span class="text-[10px] font-bold text-blue-900/40 uppercase tracking-widest">In Stock</span>
+                        <a href="/support" class="text-blue-900 font-bold text-xs hover:text-teal-500 transition-all flex items-center">
+                            Enquire Now <span class="ml-2">&rarr;</span>
+                        </a>
+                    {% else %}
+                        <span class="text-[10px] font-bold text-blue-900/40 uppercase tracking-widest">R&D Stage</span>
+                        <button class="bg-teal-50 text-teal-700 font-bold text-[10px] px-4 py-2 rounded-xl hover:bg-teal-500 hover:text-white transition-all">
+                            Request Quote
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

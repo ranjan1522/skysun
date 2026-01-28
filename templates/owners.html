@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-slate-50 py-20">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black text-blue-900">Leadership Team</h2>
+            <p class="text-gray-500 mt-2">The visionaries driving our commitment to healthcare.</p>
+        </div>
+        {% for owner in owners %}
+        <div class="bg-white rounded-3xl p-8 flex flex-col md:flex-row items-center gap-10 shadow-sm border border-white">
+            <img src="{{ owner.img }}" class="w-64 h-64 rounded-2xl object-cover shadow-lg">
+            <div>
+                <h3 class="text-3xl font-bold text-gray-800">{{ owner.name }}</h3>
+                <p class="text-teal-600 font-bold mb-4 uppercase tracking-widest text-sm">{{ owner.role }}</p>
+                <p class="text-gray-600 leading-relaxed text-lg italic">"{{ owner.desc }}"</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

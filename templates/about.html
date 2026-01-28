@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <span class="text-teal-600 font-bold tracking-widest uppercase text-sm">Established 2013</span>
+            <h1 class="text-5xl font-black text-blue-900 mt-4 leading-tight">Your Path to Healthcare <br><span class="text-teal-500">Excellence</span> Starts Here</h1>
+            <p class="text-gray-600 mt-6 text-lg leading-relaxed">
+                Skysun Lifesciences Pvt. Ltd. is one of India’s fastest-growing pharmaceutical companies, committed to delivering innovative, high-quality, and affordable healthcare solutions. Headquartered in Ahmedabad, we have made a remarkable mark in both ethical marketing and branded pharmaceuticals.
+            </p>
+        </div>
+        <div class="relative">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800" class="rounded-3xl shadow-2xl relative z-10">
+            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-teal-100 rounded-full z-0 animate-pulse"></div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:border-teal-400 transition">
+            <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h2 class="text-3xl font-bold text-blue-900">Our Mission</h2>
+            <p class="text-gray-600 mt-4">To enhance the quality of human life by providing access to high-quality, safe, and affordable pharmaceutical products. Empowering doctors and patients with trusted solutions.</p>
+        </div>
+        <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:border-blue-400 transition">
+            <div class="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mb-6 text-teal-600">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            </div>
+            <h2 class="text-3xl font-bold text-blue-900">Our Vision</h2>
+            <p class="text-gray-600 mt-4">To become a leading global pharmaceutical player by focusing on innovation, research-backed products, and ethical, transparent business practices.</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black text-blue-900">150+ Branded Formulations</h2>
+            <p class="text-gray-500 mt-2 italic">Flagship therapeutic ranges trusted by professionals.</p>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6">
+            {% set highlights = [
+                ('BP Free', 'Cardio', 'Heart health & Hypertensive care'),
+                ('Glucofix M', 'Diabeto', 'Advanced Diabetes Management'),
+                ('R Fast DSR', 'Gastro', 'Effective Gastrointestinal care'),
+                ('Cleep Plus', 'Neuro', 'Neuro & Mental Wellbeing')
+            ] %}
+            {% for name, cat, desc in highlights %}
+            <div class="p-8 bg-slate-50 rounded-2xl border-b-4 border-teal-500 hover:shadow-lg transition">
+                <span class="text-xs font-bold text-blue-900 uppercase tracking-widest">{{ cat }}</span>
+                <h4 class="text-xl font-bold text-gray-800 mt-2">{{ name }}</h4>
+                <p class="text-sm text-gray-500 mt-3">{{ desc }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-16 bg-blue-900 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 text-center md:text-left">
+        <div>
+            <h3 class="text-2xl font-bold">Best Emerging Company</h3>
+            <p class="text-blue-200">Ethical Market – India Recognition</p>
+        </div>
+        <div class="flex space-x-12 opacity-80">
+            <span class="font-bold border-2 border-white/20 px-4 py-2 rounded-lg">WHO-GMP</span>
+            <span class="font-bold border-2 border-white/20 px-4 py-2 rounded-lg">ISO CERTIFIED</span>
+            <span class="font-bold border-2 border-white/20 px-4 py-2 rounded-lg">FSSAI</span>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

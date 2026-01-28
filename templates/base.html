@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skysun Lifesciences | Excellence in Pharma</title>
+    
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/RudriLogo.png') }}" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Modern backdrop blur and smooth transitions */
+        .nav-link { @apply text-gray-600 hover:text-teal-600 font-medium transition duration-300; }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { transition: all 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+    
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 py-3">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            
+            <a href="/" class="flex items-center space-x-2">
+                <img src="{{ url_for('static', filename='images/RudriLogo.png') }}" 
+                     alt="Skysun Lifesciences" 
+                     class="h-12 w-auto object-contain">
+                <span class="text-xl font-bold text-blue-900 tracking-tighter hidden sm:block">
+                    SKYSUN<span class="text-teal-500">LIFE</span>
+                </span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/about" class="nav-link">About Us</a>
+                
+                <div class="relative dropdown">
+                    <button class="nav-link flex items-center py-4">
+                        Products 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="absolute hidden dropdown-menu bg-white border border-gray-100 shadow-2xl rounded-2xl py-3 w-56 -ml-4">
+                        <a href="/products/available" class="block px-6 py-3 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition">
+                            Available Products
+                        </a>
+                        <a href="/products/upcoming" class="block px-6 py-3 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition border-t border-gray-50">
+                            New Products
+                        </a>
+                    </div>
+                </div>
+
+                <a href="/activities" class="nav-link">Activities</a>
+                <a href="/support" class="nav-link">Support</a>
+                <a href="/careers" class="nav-link">Careers</a>
+                
+                <a href="/owners" class="bg-blue-900 text-white px-6 py-2.5 rounded-full hover:bg-teal-600 transition-all duration-300 shadow-md hover:shadow-teal-500/20 active:scale-95">
+                    Owners Info
+                </a>
+            </div>
+
+            <div class="md:hidden">
+                <button class="text-blue-900 p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-blue-950 text-white pt-20 pb-10 border-t border-blue-900">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+        
+        <div class="space-y-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/20">
+                    <span class="text-white font-black text-xl">S</span>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold tracking-tight">SKYSUN</h3>
+                    <p class="text-[10px] text-teal-400 font-black uppercase tracking-[0.3em] -mt-1">Lifesciences</p>
+                </div>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed">
+                A leading ethical pharmaceutical company based in Ahmedabad, dedicated to high-quality formulations since 2013.
+            </p>
+            <div class="pt-4">
+                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">CIN</p>
+                <p class="text-xs text-gray-400">U24233GJ2013PTC076245</p>
+            </div>
+        </div>
+
+        <div>
+            <h4 class="text-lg font-bold mb-6 text-white">Company</h4>
+            <ul class="space-y-4 text-sm text-gray-400">
+                <li><a href="/" class="hover:text-teal-400 transition-colors">Home</a></li>
+                <li><a href="/about" class="hover:text-teal-400 transition-colors">Our Journey</a></li>
+                <li><a href="/owners" class="hover:text-teal-400 transition-colors">Leadership</a></li>
+                <li><a href="/careers" class="hover:text-teal-400 transition-colors">Careers</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-lg font-bold mb-6 text-white">Products</h4>
+            <ul class="space-y-4 text-sm text-gray-400">
+                <li><a href="/products/available" class="hover:text-teal-400 transition-colors">Current Range</a></li>
+                <li><a href="/products/upcoming" class="hover:text-teal-400 transition-colors">Upcoming Pipeline</a></li>
+                <li><a href="#" class="hover:text-teal-400 transition-colors">Cardiovascular</a></li>
+                <li><a href="#" class="hover:text-teal-400 transition-colors">Neuro & Mental Health</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-lg font-bold mb-6 text-white">Support</h4>
+            <ul class="space-y-4 text-sm text-gray-400">
+                <li class="flex items-start space-x-3">
+                    <span class="text-teal-500 mt-1">📍</span>
+                    <span>Office No.201, Sparsh Arcade, Chandkheda, Ahmedabad.</span>
+                </li>
+                <li class="flex items-center space-x-3">
+                    <span class="text-teal-500">📧</span>
+                    <a href="mailto:skysunlifesciences@gmail.com" class="hover:text-teal-400">Email Us</a>
+                </li>
+                <li>
+                    <a href="/support" class="inline-block mt-2 bg-teal-500/10 text-teal-400 border border-teal-500/20 px-4 py-2 rounded-lg text-xs font-bold hover:bg-teal-500 hover:text-white transition-all">
+                        Submit Enquiry
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-[10px] uppercase font-bold tracking-widest">
+        <p>© 2026 Skysun Lifesciences Pvt. Ltd.</p>
+        <div class="flex space-x-8 mt-4 md:mt-0">
+            <a href="#" class="hover:text-teal-400">Quality Policy</a>
+            <a href="#" class="hover:text-teal-400">WHO-GMP Norms</a>
+            <a href="#" class="hover:text-teal-400">Privacy</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

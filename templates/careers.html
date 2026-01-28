@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="mb-10 p-5 rounded-2xl text-center font-bold {% if category == 'success' %}bg-teal-100 text-teal-800{% else %}bg-amber-100 text-amber-800{% endif %}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <div class="flex flex-col md:flex-row gap-12 items-center mb-20">
+            <div class="md:w-1/2">
+                <h1 class="text-5xl font-black text-blue-900 leading-tight">Nourish Your <span class="text-teal-500">Career</span> With Us</h1>
+                <p class="text-gray-600 mt-6 text-lg italic border-l-4 border-teal-500 pl-6">"At Skysun, we don't just hire employees; we partner with pioneers who want to redefine healthcare."</p>
+            </div>
+            <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                <div class="p-6 bg-blue-50 rounded-2xl text-center">
+                    <h4 class="text-3xl font-bold text-blue-900">150+</h4>
+                    <p class="text-sm text-gray-500">Branded Formulations</p>
+                </div>
+                <div class="p-6 bg-teal-50 rounded-2xl text-center">
+                    <h4 class="text-3xl font-bold text-teal-600">WHO</h4>
+                    <p class="text-sm text-gray-500">GMP Compliant Culture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-slate-50 rounded-[3rem] p-8 md:p-16 shadow-inner border border-gray-100">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-blue-900 mb-10">Apply for an Opening</h2>
+                <form action="/careers" method="POST" enctype="multipart/form-data" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input type="text" name="name" placeholder="Your Full Name" required class="w-full p-4 rounded-xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-teal-500 outline-none">
+                        <input type="email" name="email" placeholder="Your Email Address" required class="w-full p-4 rounded-xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                    <select name="position" class="w-full p-4 rounded-xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-teal-500 outline-none bg-white">
+                        <option>Medical Representative (MR)</option>
+                        <option>Area Sales Manager (ASM)</option>
+                        <option>Regional Manager</option>
+                        <option>Back Office / Admin</option>
+                    </select>
+
+                    <div class="relative group">
+                        <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-2xl cursor-pointer bg-white group-hover:border-teal-400 transition">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <p class="text-sm text-gray-500"><span class="font-bold">Click to upload resume</span> (PDF or DOC)</p>
+                            </div>
+                            <input id="resume" name="resume" type="file" class="hidden" accept=".pdf,.doc,.docx" required />
+                        </label>
+                        <div id="file-name" class="mt-2 text-center text-xs text-teal-600 font-bold"></div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-900 text-white font-bold py-4 rounded-xl hover:bg-teal-600 transition-all shadow-lg">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('resume').onchange = function() {
+        document.getElementById('file-name').textContent = "Selected: " + this.files[0].name;
+    };
+</script>
+{% endblock %}

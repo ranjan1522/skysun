@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-6">
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="mb-10 p-5 rounded-2xl text-center font-bold shadow-lg transition-all transform animate-pulse
+                {% if category == 'success' %} bg-teal-500 text-white {% elif category == 'warning' %} bg-amber-500 text-white {% else %} bg-red-500 text-white {% endif %}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-black text-blue-900 mb-4">Support & <span class="text-teal-500">Resources</span></h1>
+            <p class="text-gray-500 max-w-2xl mx-auto">Providing dedicated assistance to healthcare professionals and partners since 2013.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-12">
+            
+            <div class="lg:col-span-1 space-y-8">
+                <div class="bg-blue-900 rounded-[2.5rem] p-10 text-white shadow-2xl">
+                    <h3 class="text-2xl font-bold mb-8">Official Contact</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-teal-400 text-xs uppercase font-black tracking-widest mb-1">Registered Office</p>
+                            <p class="text-sm leading-relaxed opacity-90">
+                                Office No.201, Sparsh Arcade,<br>
+                                Opp. IOC Petrol Pump, Chandkheda,<br>
+                                Ahmedabad, Gujarat – 382424
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-teal-400 text-xs uppercase font-black tracking-widest mb-1">Direct Email</p>
+                            <a href="mailto:skysunlifesciences@gmail.com" class="text-lg hover:text-teal-300 transition">skysunlifesciences@gmail.com</a>
+                        </div>
+                        <div class="pt-6 border-t border-blue-800">
+                            <p class="text-blue-300 text-[10px] uppercase font-bold mb-2">Corporate Identity</p>
+                            <p class="text-xs opacity-70">CIN: U24233GJ2013PTC076245</p>
+                            <p class="text-xs opacity-70">Inc. Date: July 30, 2013</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+                    <h4 class="font-bold text-gray-800 mb-2">Need a Catalogue?</h4>
+                    <p class="text-sm text-gray-500 mb-4">Request our full range of 150+ branded formulations.</p>
+                    <button class="text-teal-600 font-bold text-sm hover:underline">Download PDF &rarr;</button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-12">
+                
+                <div class="bg-white rounded-[2.5rem] p-10 shadow-xl border border-gray-50">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8">Send an Enquiry</h3>
+                    <form action="/support" method="POST" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="text" name="name" placeholder="Full Name" required class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition border border-gray-100">
+                            <input type="text" name="contact" placeholder="Contact Number" required class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition border border-gray-100">
+                        </div>
+                        <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition border border-gray-100">
+                        <textarea name="message" placeholder="Your Message" rows="4" required class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition border border-gray-100"></textarea>
+                        
+                        <button type="submit" class="w-full bg-teal-500 text-white font-bold py-4 rounded-2xl shadow-lg shadow-teal-500/30 hover:bg-teal-600 transition-all active:scale-95">
+                            Submit Enquiry
+                        </button>
+                    </form>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8">Frequently Asked Questions</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <h4 class="font-bold text-blue-900">1. Who can purchase medicines from Skysun?</h4>
+                            <p class="text-gray-600 text-sm mt-2">Our products are exclusively supplied to licensed healthcare professionals and authorized distributors.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <h4 class="font-bold text-blue-900">2. Are your manufacturing facilities certified?</h4>
+                            <p class="text-gray-600 text-sm mt-2">Yes. All Skysun products are manufactured in WHO-GMP compliant and ISO-certified facilities.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <h4 class="font-bold text-blue-900">3. Do you offer PCD Pharma or Distributorship?</h4>
+                            <p class="text-gray-600 text-sm mt-2">Yes, we are looking for reliable partners across India. Use the form above to enquire about terms.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

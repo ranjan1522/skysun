@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="relative min-h-screen flex items-center bg-white overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-slate-50 -skew-x-12 translate-x-20 z-0 hidden md:block"></div>
+
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 relative z-10 py-20">
+        <div class="space-y-8">
+            <div class="inline-flex items-center space-x-2 bg-teal-50 px-4 py-2 rounded-full border border-teal-100">
+                <span class="w-2 h-2 bg-teal-500 rounded-full animate-ping"></span>
+                <span class="text-teal-700 text-xs font-bold uppercase tracking-widest">WHO-GMP Compliant Quality</span>
+            </div>
+            
+            <h1 class="text-6xl md:text-7xl font-black text-blue-950 leading-tight">
+                Advancing <span class="text-teal-500">Healthcare</span> Since 2013
+            </h1>
+            
+            <p class="text-gray-500 text-lg max-w-md leading-relaxed">
+                {{ company.name }} is a leading name in ethical pharmaceutical marketing, 
+                delivering premium formulations from Ahmedabad to healthcare providers nationwide.
+            </p>
+            
+            <div class="flex flex-wrap gap-4">
+                <a href="/products/available" class="bg-blue-900 text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-blue-900/20 hover:bg-teal-600 transition-all">
+                    Explore Portfolio
+                </a>
+                <a href="/support" class="bg-white text-blue-900 border border-gray-200 px-8 py-4 rounded-2xl font-bold hover:bg-gray-50 transition-all">
+                    Partner With Us
+                </a>
+            </div>
+        </div>
+        
+        <div class="relative flex justify-center items-center">
+    <div class="absolute w-64 h-64 md:w-80 md:h-80 bg-teal-400/10 rounded-full blur-3xl"></div>
+    
+    <img src="{{ url_for('static', filename='images/Micobin-DPM.jpeg') }}" 
+         alt="Micobin-DPM Tablet"
+         class="relative z-10 w-auto h-[350px] md:h-[450px] max-w-full object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform duration-700">
+</div>
+    </div>
+</section>
+
+<div class="bg-blue-950 py-10 border-y border-blue-900">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center">
+        <div>
+            <p class="text-teal-400 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Corporate Identity</p>
+            <p class="text-white font-mono text-sm opacity-90">CIN: U24233GJ2013PTC076245</p>
+        </div>
+        <div class="hidden md:block h-10 w-[1px] bg-blue-800 mx-auto"></div>
+        <div>
+            <p class="text-teal-400 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Incorporation Date</p>
+            <p class="text-white font-bold text-lg">July 30, 2013</p>
+        </div>
+        <div class="hidden md:block h-10 w-[1px] bg-blue-800 mx-auto"></div>
+        <div>
+            <p class="text-teal-400 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Headquarters</p>
+            <p class="text-white font-bold text-lg">Ahmedabad, Gujarat</p>
+        </div>
+    </div>
+</div>
+
+<section class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 text-center mb-16">
+        <h2 class="text-4xl font-black text-blue-900 mb-4">Core Therapeutic Areas</h2>
+        <div class="w-20 h-1.5 bg-teal-500 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all border border-gray-100 group">
+            <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-900 transition-colors">
+                <span class="text-2xl group-hover:filter group-hover:invert">❤️</span>
+            </div>
+            <h4 class="text-xl font-bold text-blue-950 mb-2">Cardiovascular</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">Trusted formulations for hypertension and cardiac care management.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all border border-gray-100 group">
+            <div class="w-14 h-14 bg-teal-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-teal-500 transition-colors">
+                <span class="text-2xl group-hover:filter group-hover:invert">🩸</span>
+            </div>
+            <h4 class="text-xl font-bold text-blue-950 mb-2">Antidiabetic</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">Advanced oral hypoglycemic agents for effective glycemic control.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all border border-gray-100 group">
+            <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-900 transition-colors">
+                <span class="text-2xl group-hover:filter group-hover:invert">🧠</span>
+            </div>
+            <h4 class="text-xl font-bold text-blue-950 mb-2">Neuro & Mental</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">Specialized formulations for neurological and mental health wellbeing.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all border border-gray-100 group">
+            <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500 transition-colors">
+                <span class="text-2xl group-hover:filter group-hover:invert">💊</span>
+            </div>
+            <h4 class="text-xl font-bold text-blue-950 mb-2">Gastrointestinal</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">Relief-focused treatments for digestive health and gastric care.</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-end mb-12">
+        <div class="text-left">
+            <h2 class="text-4xl font-black text-blue-900">New & Upcoming</h2>
+            <p class="text-gray-500 mt-2">Discover our latest additions to the Skysun portfolio.</p>
+        </div>
+        <a href="/products/upcoming" class="text-teal-600 font-bold hover:underline">View All Pipeline &rarr;</a>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+        {% for item in flagships %}
+        <div class="group">
+            <div class="bg-slate-50 rounded-[2.5rem] p-10 h-80 flex items-center justify-center mb-6 transition-all group-hover:bg-slate-100">
+                <img src="{{ url_for('static', filename='images/' + item.img) }}" 
+                     class="h-full object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700">
+            </div>
+            <h3 class="text-2xl font-bold text-blue-950">{{ item.name }}</h3>
+            <p class="text-teal-600 text-xs font-bold uppercase tracking-widest mt-1">{{ item.type }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
