@@ -9,15 +9,19 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Modern backdrop blur and smooth transitions */
         .nav-link { @apply text-gray-600 hover:text-teal-600 font-medium transition duration-300; }
-        .dropdown:hover .dropdown-menu { display: block; }
+        /* Only show dropdown on hover for desktop */
+        @media (min-width: 768px) {
+            .dropdown:hover .dropdown-menu { display: block; }
+        }
         .dropdown-menu { transition: all 0.3s ease-in-out; }
+        /* Smooth scrolling for the whole page */
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-900">
     
-    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 py-3">
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-[100] py-3">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             
             <a href="/" class="flex items-center space-x-2">
@@ -60,9 +64,27 @@
             </div>
 
             <div class="md:hidden">
-                <button class="text-blue-900 p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <button id="mobile-toggle" class="text-blue-900 p-2 focus:outline-none cursor-pointer" aria-label="Toggle Menu">
+                    <svg id="hamburger-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
                 </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-2xl border-t border-gray-100 md:hidden z-50">
+            <div class="flex flex-col p-6 space-y-4 font-semibold text-blue-900">
+                <a href="/" class="hover:text-teal-500 py-2 border-b border-gray-50">Home</a>
+                <a href="/about" class="hover:text-teal-500 py-2 border-b border-gray-100">About Us</a>
+                <div class="flex flex-col space-y-2 py-2">
+                    <span class="text-xs uppercase text-gray-400 tracking-widest">Products</span>
+                    <a href="/products/available" class="pl-4 hover:text-teal-500">Available Products</a>
+                    <a href="/products/upcoming" class="pl-4 hover:text-teal-500">New Products</a>
+                </div>
+                <a href="/activities" class="hover:text-teal-500 py-2 border-b border-gray-100">Activities</a>
+                <a href="/support" class="hover:text-teal-500 py-2 border-b border-gray-100">Support</a>
+                <a href="/careers" class="hover:text-teal-500 py-2 border-b border-gray-100">Careers</a>
+                <a href="/owners" class="inline-block text-center bg-blue-950 text-white py-3 rounded-xl mt-4">Owners Info</a>
             </div>
         </div>
     </nav>
@@ -71,77 +93,109 @@
         {% block content %}{% endblock %}
     </main>
 
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-teal-500 text-white p-3 rounded-full shadow-2xl opacity-0 transition-opacity duration-300 z-[101] hover:bg-blue-900">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
     <footer class="bg-blue-950 text-white pt-20 pb-10 border-t border-blue-900">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
-        
-        <div class="space-y-6">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/20">
-                    <span class="text-white font-black text-xl">S</span>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="space-y-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/20">
+                        <span class="text-white font-black text-xl">S</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold tracking-tight">SKYSUN</h3>
+                        <p class="text-[10px] text-teal-400 font-black uppercase tracking-[0.3em] -mt-1">Lifesciences</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-xl font-bold tracking-tight">SKYSUN</h3>
-                    <p class="text-[10px] text-teal-400 font-black uppercase tracking-[0.3em] -mt-1">Lifesciences</p>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    A leading ethical pharmaceutical company based in Ahmedabad, dedicated to high-quality formulations since 2013.
+                </p>
+                <div class="pt-4">
+                    <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">CIN</p>
+                    <p class="text-xs text-gray-400">U24233GJ2013PTC076245</p>
                 </div>
             </div>
-            <p class="text-gray-400 text-sm leading-relaxed">
-                A leading ethical pharmaceutical company based in Ahmedabad, dedicated to high-quality formulations since 2013.
-            </p>
-            <div class="pt-4">
-                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">CIN</p>
-                <p class="text-xs text-gray-400">U24233GJ2013PTC076245</p>
+            <div>
+                <h4 class="text-lg font-bold mb-6 text-white">Company</h4>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li><a href="/" class="hover:text-teal-400 transition-colors">Home</a></li>
+                    <li><a href="/about" class="hover:text-teal-400 transition-colors">Our Journey</a></li>
+                    <li><a href="/owners" class="hover:text-teal-400 transition-colors">Leadership</a></li>
+                    <li><a href="/careers" class="hover:text-teal-400 transition-colors">Careers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6 text-white">Products</h4>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li><a href="/products/available" class="hover:text-teal-400 transition-colors">Current Range</a></li>
+                    <li><a href="/products/upcoming" class="hover:text-teal-400 transition-colors">Upcoming Pipeline</a></li>
+                    <li><a href="#" class="hover:text-teal-400 transition-colors">Cardiovascular</a></li>
+                    <li><a href="#" class="hover:text-teal-400 transition-colors">Neuro & Mental Health</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6 text-white">Support</h4>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li class="flex items-start space-x-3">
+                        <span class="text-teal-500 mt-1">📍</span>
+                        <span>Office No.201, Sparsh Arcade, Chandkheda, Ahmedabad.</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-teal-500">📧</span>
+                        <a href="mailto:skysunlifesciences@gmail.com" class="hover:text-teal-400">Email Us</a>
+                    </li>
+                    <li>
+                        <a href="/support" class="inline-block mt-2 bg-teal-500/10 text-teal-400 border border-teal-500/20 px-4 py-2 rounded-lg text-xs font-bold hover:bg-teal-500 hover:text-white transition-all">
+                            Submit Enquiry
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <div>
-            <h4 class="text-lg font-bold mb-6 text-white">Company</h4>
-            <ul class="space-y-4 text-sm text-gray-400">
-                <li><a href="/" class="hover:text-teal-400 transition-colors">Home</a></li>
-                <li><a href="/about" class="hover:text-teal-400 transition-colors">Our Journey</a></li>
-                <li><a href="/owners" class="hover:text-teal-400 transition-colors">Leadership</a></li>
-                <li><a href="/careers" class="hover:text-teal-400 transition-colors">Careers</a></li>
-            </ul>
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-[10px] uppercase font-bold tracking-widest">
+            <p>© 2026 Skysun Lifesciences Pvt. Ltd.</p>
+            <div class="flex space-x-8 mt-4 md:mt-0">
+                <a href="#" class="hover:text-teal-400">Quality Policy</a>
+                <a href="#" class="hover:text-teal-400">WHO-GMP Norms</a>
+                <a href="#" class="hover:text-teal-400">Privacy</a>
+            </div>
         </div>
+    </footer>
 
-        <div>
-            <h4 class="text-lg font-bold mb-6 text-white">Products</h4>
-            <ul class="space-y-4 text-sm text-gray-400">
-                <li><a href="/products/available" class="hover:text-teal-400 transition-colors">Current Range</a></li>
-                <li><a href="/products/upcoming" class="hover:text-teal-400 transition-colors">Upcoming Pipeline</a></li>
-                <li><a href="#" class="hover:text-teal-400 transition-colors">Cardiovascular</a></li>
-                <li><a href="#" class="hover:text-teal-400 transition-colors">Neuro & Mental Health</a></li>
-            </ul>
-        </div>
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backToTop = document.getElementById('backToTop');
 
-        <div>
-            <h4 class="text-lg font-bold mb-6 text-white">Support</h4>
-            <ul class="space-y-4 text-sm text-gray-400">
-                <li class="flex items-start space-x-3">
-                    <span class="text-teal-500 mt-1">📍</span>
-                    <span>Office No.201, Sparsh Arcade, Chandkheda, Ahmedabad.</span>
-                </li>
-                <li class="flex items-center space-x-3">
-                    <span class="text-teal-500">📧</span>
-                    <a href="mailto:skysunlifesciences@gmail.com" class="hover:text-teal-400">Email Us</a>
-                </li>
-                <li>
-                    <a href="/support" class="inline-block mt-2 bg-teal-500/10 text-teal-400 border border-teal-500/20 px-4 py-2 rounded-lg text-xs font-bold hover:bg-teal-500 hover:text-white transition-all">
-                        Submit Enquiry
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+        // Toggle Mobile Menu
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-    <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-[10px] uppercase font-bold tracking-widest">
-        <p>© 2026 Skysun Lifesciences Pvt. Ltd.</p>
-        <div class="flex space-x-8 mt-4 md:mt-0">
-            <a href="#" class="hover:text-teal-400">Quality Policy</a>
-            <a href="#" class="hover:text-teal-400">WHO-GMP Norms</a>
-            <a href="#" class="hover:text-teal-400">Privacy</a>
-        </div>
-    </div>
-</footer>
+        // Close menu when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!mobileToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
 
+        // Back to Top Visibility
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.replace('opacity-0', 'opacity-100');
+            } else {
+                backToTop.classList.replace('opacity-100', 'opacity-0');
+            }
+        });
+
+        // Back to Top Click
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
