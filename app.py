@@ -10,9 +10,10 @@ app.secret_key = "skysun_secret_key_2026"
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'skysunlifesciences@gmail.com'
+#app.config['MAIL_USERNAME'] = 'skysunlifesciences@gmail.com'
 # Use a Google App Password here, not your normal password
-app.config['MAIL_PASSWORD'] = 'your-app-specific-password' 
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
 app.config['UPLOAD_FOLDER'] = 'static/uploads/resumes'
 app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024  # 5MB Limit
 
